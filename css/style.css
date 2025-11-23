@@ -1,0 +1,628 @@
+/* ============================================================
+   MODERN FRESH QUIZ APP STYLE (2025)
+   ============================================================ */
+
+/* ---------- Основни цветове ---------- */
+:root {
+  --primary: #3498db;
+  --primary-dark: #2980b9;
+  --accent: #58a6ff;
+  --success: #3c763d;
+  --error: #a94442;
+  --bg: #f4f8fb;
+  --card-bg: #ffffff;
+  --text: #2c3e50;
+  --shadow: rgba(0, 0, 0, 0.1);
+}
+
+/* ---------- Базов стил ---------- */
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #eef5ff, #f9fbfd);
+  color: var(--text);
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.container {
+  background: var(--card-bg);
+  margin: 40px 20px;
+  max-width: 900px;
+  width: 100%;
+  padding: 40px 50px;
+  border-radius: 20px;
+  box-shadow: 0 15px 35px var(--shadow);
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+/* ---------- Заглавия ---------- */
+h1, h2, h3 {
+  text-align: center;
+  color: var(--text);
+  margin-bottom: 25px;
+  letter-spacing: 0.5px;
+}
+
+h1 {
+  font-size: 2.6rem;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+h3 {
+  font-size: 1.4rem;
+  color: var(--primary-dark);
+  margin-top: 40px;
+}
+
+/* ---------- Връзки ---------- */
+a {
+  color: var(--primary);
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--primary-dark);
+  text-decoration: underline;
+}
+
+/* ---------- Категории ---------- */
+.category-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+  margin: 30px 0;
+}
+
+.category-item {
+  background: linear-gradient(45deg, var(--primary), var(--primary-dark));
+  color: white;
+  padding: 18px 30px;
+  border-radius: 14px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(52,152,219,0.3);
+}
+
+.category-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 20px rgba(52,152,219,0.4);
+}
+
+/* ---------- Въпроси ---------- */
+.quiz-question {
+  display: none;
+  background: var(--card-bg);
+  border-left: 6px solid var(--primary);
+  border-radius: 12px;
+  padding: 25px 30px;
+  margin-bottom: 25px;
+  box-shadow: 0 6px 16px var(--shadow);
+  transition: all 0.3s ease;
+}
+
+.quiz-question.active {
+  display: block;
+  animation: fadeInUp 0.4s ease-in-out;
+}
+
+.quiz-question:hover {
+  border-left-color: var(--primary-dark);
+  transform: translateY(-2px);
+}
+
+.quiz-question p {
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+}
+
+/* ---------- Радио бутони ---------- */
+label {
+  display: block;
+  background: #f8faff;
+  margin-bottom: 10px;
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 1px solid #dce7f3;
+}
+
+input[type="radio"] {
+  accent-color: var(--primary);
+  margin-right: 10px;
+}
+
+label:hover {
+  background: #eef5ff;
+  transform: scale(1.01);
+}
+
+input[type="radio"]:checked + span,
+input[type="radio"]:checked + label {
+  font-weight: 600;
+  color: var(--primary-dark);
+}
+
+/* ---------- Бутони ---------- */
+button {
+  background: linear-gradient(45deg, var(--primary), var(--primary-dark));
+  border: none;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 12px 28px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(52,152,219,0.3);
+}
+
+button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(52,152,219,0.4);
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+/* ---------- Навигация между въпроси ---------- */
+.nav-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+
+#prevBtn {
+  background: #95a5a6;
+}
+
+#prevBtn:hover {
+  background: #7f8c8d;
+}
+
+/* ---------- Резултати ---------- */
+.result {
+  text-align: center;
+  background: #e8f7e4;
+  color: var(--success);
+  font-weight: 700;
+  font-size: 1.2rem;
+  padding: 18px;
+  border-radius: 12px;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+  margin-bottom: 25px;
+}
+
+.result.wrong {
+  background: #fdecea;
+  color: var(--error);
+}
+
+/* ---------- Таблица с резултати ---------- */
+.results-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.results-table th {
+  background: var(--primary);
+  color: white;
+  text-transform: uppercase;
+  padding: 14px;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+}
+
+.results-table td {
+  padding: 14px;
+  text-align: center;
+  background: white;
+}
+
+.results-table tr:nth-child(even) td {
+  background: #f8faff;
+}
+
+.results-table tr:hover td {
+  background: #eef5ff;
+}
+
+/* ---------- Неотговорени въпроси ---------- */
+.unanswered {
+  border-left: 6px solid #e74c3c !important;
+  background: #fff7f7 !important;
+  animation: shake 0.4s;
+}
+
+/* ---------- Footer ---------- */
+footer {
+  text-align: center;
+  margin-top: 40px;
+  padding: 15px;
+  font-size: 14px;
+  color: #777;
+}
+
+/* ---------- Адаптивен дизайн ---------- */
+@media (max-width: 768px) {
+  .container {
+    padding: 25px 20px;
+  }
+
+  .category-item {
+    width: 100%;
+    text-align: center;
+  }
+
+  .nav-buttons {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  button {
+    width: 100%;
+  }
+}
+
+/* ---------- Анимации ---------- */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+/* ---------- Ефекти при фокус ---------- */
+input[type="radio"]:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* ---------- Преходи при hover ---------- */
+.category-item,
+button,
+label {
+  transition: all 0.25s ease-in-out;
+}
+
+/* ============================================================
+   LOGIN 
+   ============================================================ */
+
+body.login-page, body.register-page {
+  background: linear-gradient(135deg, #eef5ff, #dfe9f3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.container {
+  background: var(--card-bg);
+  width: 100%;
+  max-width: 420px;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.6s ease;
+}
+
+.container h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: var(--primary-dark);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"] {
+  padding: 12px 15px;
+  margin-bottom: 20px;
+  border: 1px solid #d0dbe7;
+  border-radius: 10px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  background: #f9fbff;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="email"]:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 5px rgba(52,152,219,0.4);
+  background: #fff;
+  outline: none;
+}
+
+button.submit-btn {
+  background: linear-gradient(45deg, var(--primary), var(--primary-dark));
+  border: none;
+  color: white;
+  padding: 14px;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(52,152,219,0.3);
+}
+
+button.submit-btn:hover {
+  background: linear-gradient(45deg, var(--primary-dark), var(--primary));
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(52,152,219,0.4);
+}
+
+.message.error {
+  background: #fdecea;
+  color: var(--error);
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: 600;
+}
+
+p {
+  text-align: center;
+  font-size: 0.95rem;
+}
+
+p a {
+  color: var(--primary);
+  font-weight: 600;
+  transition: color 0.3s;
+}
+
+p a:hover {
+  color: var(--primary-dark);
+}
+
+/* ============================================================
+   🧩 REGISTER PAGE STYLES
+   ============================================================ */
+
+body.register-page {
+  background: linear-gradient(135deg, #e6f0ff, #f7faff);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container {
+  background: #fff;
+  width: 100%;
+  max-width: 440px;
+  padding: 40px 35px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  animation: fadeIn 0.6s ease;
+}
+
+.container h2 {
+  text-align: center;
+  font-size: 1.8rem;
+  color: #2c3e50;
+  margin-bottom: 25px;
+  letter-spacing: 0.5px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+input[type="email"],
+input[type="text"] {
+  padding: 12px 15px;
+  margin-bottom: 20px;
+  border: 1px solid #ccd7e0;
+  border-radius: 10px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  background: #f8fbff;
+}
+
+input[type="email"]:focus,
+input[type="text"]:focus {
+  border-color: #3498db;
+  background: #fff;
+  box-shadow: 0 0 5px rgba(52, 152, 219, 0.4);
+  outline: none;
+}
+
+button.submit-btn {
+  background: linear-gradient(45deg, #3498db, #2980b9);
+  border: none;
+  color: white;
+  padding: 14px;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+}
+
+button.submit-btn:hover {
+  background: linear-gradient(45deg, #2980b9, #3498db);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(52, 152, 219, 0.4);
+}
+
+.message.success,
+.message.error {
+  text-align: center;
+  font-weight: 600;
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 20px;
+}
+
+.message.success {
+  background: #e9f9ef;
+  color: #2e7d32;
+  border-left: 5px solid #4caf50;
+}
+
+.message.error {
+  background: #fdecea;
+  color: #c0392b;
+  border-left: 5px solid #e74c3c;
+}
+
+p {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+p a {
+  color: #3498db;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+p a:hover {
+  color: #2980b9;
+  text-decoration: underline;
+}
+
+/* Анимация за плавно появяване */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================================================
+   🪪 VERIFY PAGE STYLES
+   ============================================================ */
+
+body.verify-page {
+  background: linear-gradient(120deg, #f0f7ff, #e3f2fd);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container {
+  background: #ffffff;
+  max-width: 420px;
+  width: 90%;
+  padding: 40px 35px;
+  border-radius: 20px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  animation: slideIn 0.5s ease-out;
+}
+
+.container h2 {
+  text-align: center;
+  font-size: 1.7rem;
+  color: #2c3e50;
+  margin-bottom: 25px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+input[type="password"] {
+  padding: 12px 14px;
+  margin-bottom: 20px;
+  border: 1px solid #cfd8dc;
+  border-radius: 10px;
+  background-color: #f8fbff;
+  font-size: 15px;
+  transition: all 0.3s ease;
+}
+
+input[type="password"]:focus {
+  border-color: #42a5f5;
+  background-color: #ffffff;
+  box-shadow: 0 0 5px rgba(66, 165, 245, 0.4);
+  outline: none;
+}
+
+button.submit-btn {
+  background: linear-gradient(45deg, #42a5f5, #1e88e5);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 13px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(66, 165, 245, 0.3);
+}
+
+button.submit-btn:hover {
+  background: linear-gradient(45deg, #1e88e5, #1565c0);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(30, 136, 229, 0.4);
+}
+
+.message {
+  text-align: center;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.message.error {
+  background: #fdecea;
+  color: #c0392b;
+  border-left: 5px solid #e74c3c;
+}
+
+.message.success {
+  background: #e8f5e9;
+  color: #2e7d32;
+  border-left: 5px solid #4caf50;
+}
+
+/* Анимация при показване */
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
