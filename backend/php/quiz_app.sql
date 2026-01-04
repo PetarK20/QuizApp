@@ -187,13 +187,6 @@ CREATE TABLE `quiz_results` (
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data for table `quiz_results`
---
-
-INSERT INTO `quiz_results` (`id`, `user_id`, `category_id`, `score`, `total`, `duration`, `created_at`) VALUES
-(1, 51, 6, 11, 11, 47, '2025-12-22 10:06:22');
-
 -- --------------------------------------------------------
 
 --
@@ -210,16 +203,6 @@ CREATE TABLE `scores` (
   `duration` int DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data for table `scores`
---
-
-INSERT INTO `scores` (`id`, `user_id`, `category_id`, `score`, `total`, `quiz_date`, `duration`) VALUES
-(84, 47, 7, 10, 10, '2025-11-05 05:30:15', 43),
-(85, 47, 6, 8, 10, '2025-11-05 05:31:21', 46),
-(86, 47, 11, 9, 10, '2025-11-05 05:32:56', 69),
-(87, 47, 12, 7, 10, '2025-11-05 05:34:34', 69),
-(88, 47, 13, 7, 10, '2025-11-05 05:36:05', 69);
 
 -- --------------------------------------------------------
 
@@ -245,9 +228,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `email`, `course_number`, `password_hash`, `is_verified`, `verification_token`, `verification_expires`, `reset_token`, `reset_expires`, `is_admin`) VALUES
-(47, '22324@uktc-bg.com', '22324', '$2y$10$bI4z3JN4EJfd.oIUic9oqu.Rs8HYlethl.YrJXPXwCAR2oeuXio56', 1, NULL, NULL, NULL, NULL, 0),
-(51, 'admin@example.com', '99999', '$2y$10$G7OHndyoRCDxVf4GAm6REO.mglID7I01faK.vCZa2hCr.VOE5IjYG', 1, NULL, NULL, NULL, NULL, 1),
-(55, '22401@uktc-bg.com', '22401', '$2y$10$LQBn2EbO565Aj6jNYBhogeNy5KIyxtD49owIKcMNlEAPcTrcsNZ5K', 1, NULL, NULL, NULL, NULL, 0);
+(51, 'admin@example.com', '99999', '$2y$10$G7OHndyoRCDxVf4GAm6REO.mglID7I01faK.vCZa2hCr.VOE5IjYG', 1, NULL, NULL, NULL, NULL, 1);
+
 
 --
 -- Indexes for dumped tables
