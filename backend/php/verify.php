@@ -57,6 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !$error) {
             $error = "Невалиден или изтекъл токен!";
         } else {
             $hash = password_hash($password, PASSWORD_BCRYPT, ['cost' => 12]);
+            // При cost => 12: Алгоритъмът прави 2^{12} = 4096 итерации
             $update = $db->prepare("UPDATE users SET password_hash = ?, is_verified = 1, verification_token = NULL, verification_expires = NULL WHERE id = ?");
 
             if ($update->execute([$hash, $user['id']])) {
@@ -107,3 +108,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !$error) {
 
 
 </html>
+
