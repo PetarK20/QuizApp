@@ -31,7 +31,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = trim($_POST['email']);
     $course_number = trim($_POST['course_number']);
 
-    // Валидация (логика от User.php)
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $error = 'Невалиден имейл адрес!';
     } elseif (!preg_match('/^\d{5}$/', $course_number)) {
@@ -49,7 +48,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $stmt = $db->prepare("INSERT INTO users (email, course_number, verification_token, verification_expires) VALUES (?, ?, ?, ?)");
             if ($stmt->execute([$email, $course_number, $token, $expires])) {
 
-                // Изпращане на имейл (логика от Mailer.php)
                 $mail = new PHPMailer(true);
                 try {
                     $mail->isSMTP();
@@ -141,5 +139,6 @@ $showSuccessMessage = isset($_GET['deleted']) && $_GET['deleted'] == '1';
         </div>
     </div>
 </body>
+
 
 </html>
