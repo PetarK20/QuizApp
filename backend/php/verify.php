@@ -64,7 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !$error) {
                 // АВТОМАТИЧЕН ВХОД:
                 $_SESSION['user_id'] = $user['id'];
 
-                // ПРЕНАСОЧВАНЕ КЪМ QUIZ.PHP (вместо login.php)
+                // ПРЕНАСОЧВАНЕ КЪМ QUIZ.PHP 
                 header("Location: quiz.php");
                 exit;
             }
@@ -108,4 +108,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !$error) {
 
 
 </html>
+
 
