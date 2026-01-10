@@ -8,7 +8,7 @@ if (file_exists(__DIR__ . '/.env')) {
     $dotenv->load();
 }
 
-// 2. Връзка с базата данни (използваме вашите променливи от .env)
+// 2. Връзка с базата данни (използваме променливите от .env)
 try {
     $db = new PDO(
         "mysql:host=" . $_ENV['DB_HOST'] . ";dbname=" . $_ENV['DB_NAME'] . ";charset=utf8mb4",
@@ -91,5 +91,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
     </div>
 </body>
+
 
 </html>
